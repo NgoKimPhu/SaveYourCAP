@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="styles.css" rel="stylesheet">
+    <title>Save your CAP</title>
+</head>
+<body>
+    <div class="grid">
+        <header>
+            <h1>
+                Save your CAP</h1>
+            <ul>
+                <li><a href="#gameZone" id="newGame">New game</a></li>
+                <li><a href="#gameZone" id="pause"> Pause</a></li>
+                <li><a href="#gameZone" id="fooBar"> Surrender</a></li>
+            </ul>
+        </header>
+        <div id="gameZone">
+            <canvas id="backgroundCanvas">
+                Your browser doesn't support HTML5. Please install lastest web browsers.
+            </canvas>
+            <svg id="svgRoot">
+				<image xlink:href="stick.gif" x="100" y="100" height="100px" width="100px" id="stick"/>
+            </svg>
+			<div id="health">
+			</div>
+			<div id="score">
+			</div>
+            <div id="stats">
+            </div>
+            <div id="message">Victory!</div>
+        </div>
+        <footer>
+            <ul>
+                <li><a href="https://orbital2015.slack.com/team/kipu">Ngo Kim Phu</a></li>
+            </ul>
+        </footer>
+    </div>
+    <script type="text/javascript" src="mouse.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+</body>
+</html>
