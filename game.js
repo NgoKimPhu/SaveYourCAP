@@ -56,7 +56,7 @@ function prof(id, x, y) {
     rect.setAttribute("height", profHeight);
 	
     // Random green color
-    var chars = "456789abcdef";
+    var chars = "456789abc";
     var color = "";
     for (var i = 0; i < 2; i++) {
         var rnd = Math.floor(chars.length * Math.random());
@@ -192,7 +192,7 @@ function gameLoop() {
 	
     
     // Victory ?
-    if (destroyedprofsCount == requirement) {
+    if (destroyedprofsCount >= requirement) {
         win();
     }
 	
