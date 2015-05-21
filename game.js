@@ -127,15 +127,15 @@ function moveStick() {
 
     stickSpeed *= inertia;
 
-    if (stickY < (maxY-profHeight-minY)/4)
-        stickY = (maxY-profHeight-minY)/4;
+    if (stickY < minY - (stickHeight-profHeight)/2)
+        stickY = minY - (stickHeight-profHeight)/2;
 
-    if (stickY > (maxY-profHeight-minY)*.75)
-        stickY = (maxY-profHeight-minY)*.75;
+    if (stickY > maxY - (stickHeight-profHeight)/2)
+        stickY = maxY - (stickHeight-profHeight)/2;
 }
 
 registerMouseMove(document.getElementById("gameZone"), function (posx, posy, previousX, previousY) {
-    stickSpeed += (posy - previousY) * 0.2;
+    stickSpeed += (posy - previousY);
 });
 
 window.addEventListener('keydown', function (evt) {
@@ -146,7 +146,7 @@ window.addEventListener('keydown', function (evt) {
             // break;
         // Up arrow
         case 38:
-            stickSpeed -= (maxY-profHeight-minY)/4;
+            stickSpeed -= (maxY-minY)/2;
             break;
         // Right arrow
         // case 39:
@@ -154,14 +154,15 @@ window.addEventListener('keydown', function (evt) {
             // break;
         // Down arrow
         case 40:
-            stickSpeed += (maxY-profHeight-minY)/4;
+            stickSpeed += (maxY-minY)/2;
             break;
     }
 }, true);
 
 function checkWindow() {
     maxX = window.innerWidth - minX;
-    maxY = window.innerHeight - 130 - 40 - minY;
+    maxY = (window.innerHeight - 130 - 40 - minY);
+	minY = maxY/3;
     stickX = minX + 30;
 }
 
@@ -170,7 +171,7 @@ function gameLoop() {
 
     // profs
 	if (Math.random() < 0.02) {
-		profs[profID++] = new prof(profID-1, maxX - profWidth, Math.floor(Math.random()*3+1)/4*(maxY-profHeight-minY) + minY);
+		profs[profID++] = new prof(profID-1, maxX, Math.floor(Math.random()*3+1)*minY);
 	}
 	
     for (var index = 0; index < profs.length; index++) {
@@ -237,7 +238,7 @@ function initGame() {
 
     checkWindow();
     
-    stickY = (window.innerHeight - stickHeight) / 2.0;
+    stickY = minY - (stickHeight-profHeight)/2;
     
     stickSpeed = 0;
 
