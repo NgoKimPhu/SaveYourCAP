@@ -32,7 +32,7 @@ var minY = 0;
 var maxX;
 var maxY;
 var startDate;
-var requirement = 100;
+var requirement = 100000;
 var isPaused = false;
 
 // prof function
@@ -56,7 +56,7 @@ function prof(id, x, y) {
     rect.setAttribute("height", profHeight);
 	
     // Random green color
-    var chars = "456789abc";
+    var chars = "33444555556666777889a";
     var color = "";
     for (var i = 0; i < 2; i++) {
         var rnd = Math.floor(chars.length * Math.random());
@@ -183,7 +183,7 @@ function gameLoop() {
     stick.setAttribute("y", stickY);
 	
 	// Score
-	score.innerHTML = destroyedprofsCount+"/"+requirement;
+	score.innerHTML = destroyedprofsCount;//+"/"+requirement;
 	
 	// Health
 	health.innerHTML = Array(hearts+1).join("♥");
